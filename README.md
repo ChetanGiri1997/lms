@@ -56,36 +56,35 @@ Install Backend Dependencies:
 
 cd backend  
 pip install -r requirements.txt  
-Create a .env file:  
-In the backend folder, create a .env file with the following variables:  
-
-MONGODB_URL=mongodb://localhost:27017
-DB_NAME=lms_db
-ACCESS_TOKEN_EXPIRY=30
-SECRET_KEY=your_secret_key_here
-Run Backend Server:
-bash
-Copy code
-uvicorn main:app --reload
-This will start the FastAPI server on http://localhost:8000.
-
+Create a .env file:    
+In the backend folder, create a .env file with the following variables:    
+  
+MONGODB_URL=mongodb://localhost:27017  
+DB_NAME=lms_db  
+ACCESS_TOKEN_EXPIRY=30  
+SECRET_KEY=your_secret_key_here  
+Run Backend Server:  
+  
+uvicorn main:app --reload  
+This will start the FastAPI server on http://localhost:8000.  
+  
 ### 3. Set up the Frontend (React)
-Install Frontend Dependencies:
+Install Frontend Dependencies:  
 
-cd frontend
-npm install
-Run the React Development Server:
-npm start
-This will start the React app on http://localhost:3000.
-
-### 4. Running Everything with Docker (Optional)
-If you prefer to run the full application in containers, you can use Docker Compose.
-
-Build and Run Containers:
-
-docker-compose up --build
-This will set up both the backend and frontend along with the MongoDB database in isolated containers.
-
+cd frontend  
+npm install  
+Run the React Development Server:  
+npm start  
+This will start the React app on http://localhost:3000.  
+  
+### 4. Running Everything with Docker (Optional)  
+If you prefer to run the full application in containers, you can use Docker Compose.  
+  
+Build and Run Containers:  
+  
+docker-compose up --build  
+This will set up both the backend and frontend along with the MongoDB database in isolated containers.  
+  
 ## 📱 API Endpoints
 The following API endpoints are available:
 
