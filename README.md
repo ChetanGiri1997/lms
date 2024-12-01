@@ -106,7 +106,7 @@ The following API endpoints are available:
 
 ### Authentication
 
-POST /api/login
+POST /api/login -->
 Get JWT token by providing username and password.
 Example body:
 
@@ -116,37 +116,37 @@ Example body:
   "password": "password123"
 }
 
-POST /api/logout
+POST /api/logout -->
 Invalidate the current user’s JWT token.
 
 ### User Management
-GET /api/users
+GET /api/users -->
 Fetch all users (Admin only).
 
-POST /api/users
+POST /api/users -->
 Create a new user (Admin only).
 
-PUT /api/users/{user_id}
+PUT /api/users/{user_id} -->
 Update a user’s details (Admin only).
 
-DELETE /api/users/{user_id}
+DELETE /api/users/{user_id} -->
 Delete a user (Admin only).
 
 ### Course Management
-GET /api/courses
+GET /api/courses -->
 Fetch all courses.
 
-POST /api/courses
+POST /api/courses -->
 Create a new course (Instructor/Admin only).
 
-PUT /api/courses/{course_id}
+PUT /api/courses/{course_id} -->
 Update course details (Instructor/Admin only).
 
-DELETE /api/courses/{course_id}
+DELETE /api/courses/{course_id} -->
 Delete a course (Instructor/Admin only).
 
 Student Dashboard
-GET /api/student/courses
+GET /api/student/courses -->
 Fetch all courses a student is enrolled in.
 
 ## 🔒 Security
