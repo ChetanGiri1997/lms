@@ -7,10 +7,11 @@ from typing import ClassVar, Dict
 # Load environment variables from .env
 load_dotenv()
 
+
 class Settings(BaseSettings):
 
     SECRET_KEY: str = secrets.token_urlsafe(32)
-    MONGODB_URL: str = f"mongodb+srv://chiranjung321:Chetan2053@cluster0.2zyaflh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+    MONGODB_URL: str = f"mongodb+srv://{username}:{password}@cluster0.2zyaflh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
     DB_NAME: str = "lms"
     ALGORITHM: str = "HS256"
     
