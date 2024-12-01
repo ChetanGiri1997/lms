@@ -94,6 +94,10 @@ class UserLogin(BaseModel):
     identifier: str  # This can be username or email
     password: str
 
+class SwaggerToken(BaseModel):
+    username: str
+    password: str
+
 class UserProfileOut(BaseModel):
     id: str
     username: str

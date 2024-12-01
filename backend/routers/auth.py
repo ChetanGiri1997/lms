@@ -114,7 +114,6 @@ async def get_current_user(
 
 
 
-
 @router.post("/login", response_model=Token)
 async def login_for_access_token(login_request: UserLogin, db=Depends(get_db)):
     user = await authenticate_user(db, login_request.identifier, login_request.password)
@@ -126,8 +125,8 @@ async def login_for_access_token(login_request: UserLogin, db=Depends(get_db)):
         )
 
     # Generate access and refresh tokens
-    access_token_expires = timedelta(minutes=os.loadenv("ACCESS_TOKEN_EXPIRE_MINUTES"))
-    refresh_token_expires = timedelta(days=os.loadenv("REFRESH_TOKEN_EXPIRE_DAYS"))
+    access_token_expires = timedelta(minutes=int(os.getenv("ACCESS_TOKEN_EXPIRY")))
+    refresh_token_expires = timedelta(days=int(os.getenv("REFRESH_TOKEN_EXPIRY")))
     access_token = create_access_token(
         data={"sub": user.username, "role": user.role}, expires_delta=access_token_expires
     )

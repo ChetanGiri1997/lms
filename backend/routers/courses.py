@@ -13,10 +13,6 @@ async def test_db_connection(db):
     print("Courses:", courses)  # Check if you can fetch any courses
 
 
-
-
-router = APIRouter()
-
 async def get_db():
     client = AsyncIOMotorClient('mongodb://localhost:27017')
     db = client['local']  # Replace with your database name

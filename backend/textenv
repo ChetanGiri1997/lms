@@ -1,0 +1,8 @@
+# MongoDB Configuration
+MONGODB_URL="mongodb+srv://chiranjung321:Chetan2053@cluster0.2zyaflh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+DB_NAME=lms
+
+
+# Token Expiry Times (in seconds)
+ACCESS_TOKEN_EXPIRY=3600  # 1 hour
+REFRESH_TOKEN_EXPIRY=86400  # 24 hours

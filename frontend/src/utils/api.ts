@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:8000/api',
+  baseURL: 'https://potential-chainsaw-pjgwpr7qxgqx26657-8000.app.github.dev/api',
 });
 
 api.interceptors.request.use(
