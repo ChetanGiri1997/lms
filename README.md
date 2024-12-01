@@ -33,19 +33,6 @@ Welcome to the **Learning Management System (LMS)** built with the powerful **FA
   - **Docker** - For containerization of the application.
   - **Nginx** - Reverse proxy server for handling requests and serving static files.
 
----
-
-## 📸 **Screenshots**
-
-### Login Page:
-![Login Page](![image](https://github.com/user-attachments/assets/a48dd195-d4ef-463f-a877-f5a1d969ad82)
-)
-
-### Dashboard:
-![Student Dashboard](https://via.placeholder.com/800x400.png?text=Student+Dashboard)
-
-### Course Management:
-![Course Management](https://via.placeholder.com/800x400.png?text=Course+Management)
 
 ---
 
