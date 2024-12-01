@@ -163,10 +163,10 @@ React Documentation: https://reactjs.org/docs/getting-started.html
 MongoDB Documentation: https://docs.mongodb.com
 
 ## 📦 Future Enhancements
-Adding video conferencing for virtual classes.
-Improved reporting and analytics for admins.
-Real-time messaging/chat between students and instructors.
-Integration with third-party tools like Google Classroom or Zoom.
+Adding video conferencing for virtual classes.  
+Improved reporting and analytics for admins.  
+Real-time messaging/chat between students and instructors.  
+Integration with third-party tools like Google Classroom or Zoom.  
 
 
 # Thank you for checking out this project! 🚀
