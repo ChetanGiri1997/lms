@@ -43,8 +43,8 @@ Follow these steps to get your LMS up and running locally!
 ### **1. Clone the Repository**
 
 
-git clone https://github.com/yourusername/lms-farm-stack.git
-cd lms-farm-stack
+git clone https://github.com/ChetanGiri1997/lms.git. 
+cd lms-farm-stack. 
 
 ### 2. Set up the Backend (FastAPI + MongoDB)
 Requirements:
@@ -63,9 +63,10 @@ MONGODB_URL=mongodb://localhost:27017
 DB_NAME=lms_db  
 ACCESS_TOKEN_EXPIRY=30  
 SECRET_KEY=your_secret_key_here  
+  
 Run Backend Server:  
   
-uvicorn main:app --reload  
+uvicorn main:app --reload    
 This will start the FastAPI server on http://localhost:8000.  
   
 ### 3. Set up the Frontend (React)
