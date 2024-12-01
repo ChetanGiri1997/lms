@@ -38,7 +38,8 @@ Welcome to the **Learning Management System (LMS)** built with the powerful **FA
 ## 📸 **Screenshots**
 
 ### Login Page:
-![Login Page](https://via.placeholder.com/800x400.png?text=Login+Page)
+![Login Page](![image](https://github.com/user-attachments/assets/a48dd195-d4ef-463f-a877-f5a1d969ad82)
+)
 
 ### Dashboard:
 ![Student Dashboard](https://via.placeholder.com/800x400.png?text=Student+Dashboard)
@@ -103,8 +104,9 @@ This will set up both the backend and frontend along with the MongoDB database i
 ## 📱 API Endpoints
 The following API endpoints are available:
 
-Authentication
-POST /token
+### Authentication
+
+POST /api/login
 Get JWT token by providing username and password.
 Example body:
 
@@ -117,7 +119,7 @@ Example body:
 POST /api/logout
 Invalidate the current user’s JWT token.
 
-User Management
+### User Management
 GET /api/users
 Fetch all users (Admin only).
 
@@ -130,7 +132,7 @@ Update a user’s details (Admin only).
 DELETE /api/users/{user_id}
 Delete a user (Admin only).
 
-Course Management
+### Course Management
 GET /api/courses
 Fetch all courses.
 
