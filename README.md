@@ -137,14 +137,14 @@ Fetch all courses a student is enrolled in.
 This project uses JWT (JSON Web Token) authentication to secure all routes that require authorization. Ensure that you pass the Bearer token obtained from the /token endpoint in the Authorization header of the request.
 
 ## 🎉 Contributing
-We welcome contributions to improve the system! If you want to contribute, follow these steps:
-
-Fork the repository.
-Create a feature branch: git checkout -b feature-branch.
-Make your changes.
-Commit your changes: git commit -m 'Add feature'.
-Push to your forked repository: git push origin feature-branch.
-Open a pull request.
+We welcome contributions to improve the system! If you want to contribute, follow these steps:  
+  
+Fork the repository.  
+Create a feature branch: git checkout -b feature-branch.  
+Make your changes.  
+Commit your changes: git commit -m 'Add feature'.  
+Push to your forked repository: git push origin feature-branch.  
+Open a pull request.  
 
 ## 📄 License
 This project is licensed under the MIT License - see the LICENSE file for details.
