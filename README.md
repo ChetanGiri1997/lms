@@ -48,16 +48,16 @@ cd lms-farm-stack
 
 ### 2. Set up the Backend (FastAPI + MongoDB)
 Requirements:
-Python 3.8+
+Python 3.12+
 MongoDB instance (either local or use a service like MongoDB Atlas)
 Docker (Optional but recommended for deployment)
 
-Install Backend Dependencies:
+Install Backend Dependencies:  
 
-cd backend
-pip install -r requirements.txt
-Create a .env file:
-In the backend folder, create a .env file with the following variables:
+cd backend  
+pip install -r requirements.txt  
+Create a .env file:  
+In the backend folder, create a .env file with the following variables:  
 
 MONGODB_URL=mongodb://localhost:27017
 DB_NAME=lms_db
@@ -75,8 +75,6 @@ Install Frontend Dependencies:
 cd frontend
 npm install
 Run the React Development Server:
-bash
-Copy code
 npm start
 This will start the React app on http://localhost:3000.
 
