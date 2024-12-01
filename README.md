@@ -58,22 +58,19 @@ Follow these steps to get your LMS up and running locally!
 git clone https://github.com/yourusername/lms-farm-stack.git
 cd lms-farm-stack
 
-###2. Set up the Backend (FastAPI + MongoDB)
+### 2. Set up the Backend (FastAPI + MongoDB)
 Requirements:
 Python 3.8+
 MongoDB instance (either local or use a service like MongoDB Atlas)
 Docker (Optional but recommended for deployment)
 
 Install Backend Dependencies:
-bash
-Copy code
+
 cd backend
 pip install -r requirements.txt
 Create a .env file:
 In the backend folder, create a .env file with the following variables:
 
-dotenv
-Copy code
 MONGODB_URL=mongodb://localhost:27017
 DB_NAME=lms_db
 ACCESS_TOKEN_EXPIRY=30
@@ -84,10 +81,9 @@ Copy code
 uvicorn main:app --reload
 This will start the FastAPI server on http://localhost:8000.
 
-3. Set up the Frontend (React)
+### 3. Set up the Frontend (React)
 Install Frontend Dependencies:
-bash
-Copy code
+
 cd frontend
 npm install
 Run the React Development Server:
@@ -96,16 +92,15 @@ Copy code
 npm start
 This will start the React app on http://localhost:3000.
 
-4. Running Everything with Docker (Optional)
+### 4. Running Everything with Docker (Optional)
 If you prefer to run the full application in containers, you can use Docker Compose.
 
 Build and Run Containers:
-bash
-Copy code
+
 docker-compose up --build
 This will set up both the backend and frontend along with the MongoDB database in isolated containers.
 
-📱 API Endpoints
+## 📱 API Endpoints
 The following API endpoints are available:
 
 Authentication
@@ -113,12 +108,12 @@ POST /token
 Get JWT token by providing username and password.
 Example body:
 
-json
-Copy code
+
 {
-  "username": "john_doe",
+  "username": "chetan",
   "password": "password123"
 }
+
 POST /api/logout
 Invalidate the current user’s JWT token.
 
@@ -151,10 +146,11 @@ Delete a course (Instructor/Admin only).
 Student Dashboard
 GET /api/student/courses
 Fetch all courses a student is enrolled in.
-🔒 Security
+
+## 🔒 Security
 This project uses JWT (JSON Web Token) authentication to secure all routes that require authorization. Ensure that you pass the Bearer token obtained from the /token endpoint in the Authorization header of the request.
 
-🎉 Contributing
+## 🎉 Contributing
 We welcome contributions to improve the system! If you want to contribute, follow these steps:
 
 Fork the repository.
@@ -163,24 +159,28 @@ Make your changes.
 Commit your changes: git commit -m 'Add feature'.
 Push to your forked repository: git push origin feature-branch.
 Open a pull request.
-📄 License
+
+## 📄 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-💬 Contact
+## 💬 Contact
 If you have any questions or need help, feel free to reach out:
 
-Email: your.email@example.com
-GitHub: https://github.com/yourusername
-Twitter: @yourusername
-👨‍🏫 Learning Resources
+Email: info@chetangiri.com.np
+GitHub: https://github.com/ChetanGiri1997
+
+## 👨‍🏫 Learning Resources
 For those who want to learn more about the technologies used in this LMS:
 
 FastAPI Documentation: https://fastapi.tiangolo.com
 React Documentation: https://reactjs.org/docs/getting-started.html
 MongoDB Documentation: https://docs.mongodb.com
-📦 Future Enhancements
+
+## 📦 Future Enhancements
 Adding video conferencing for virtual classes.
 Improved reporting and analytics for admins.
 Real-time messaging/chat between students and instructors.
 Integration with third-party tools like Google Classroom or Zoom.
-Thank you for checking out this project! 🚀
+
+
+# Thank you for checking out this project! 🚀
