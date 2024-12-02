@@ -43,8 +43,8 @@ Follow these steps to get your LMS up and running locally!
 ### **1. Clone the Repository**
 
 
-git clone https://github.com/ChetanGiri1997/lms.git. 
-cd lms-farm-stack. 
+git clone https://github.com/ChetanGiri1997/lms.git.  
+cd lms-farm-stack.   
 
 ### 2. Set up the Backend (FastAPI + MongoDB)
 Requirements:
