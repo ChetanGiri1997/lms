@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from contextlib import asynccontextmanager
 from motor.motor_asyncio import AsyncIOMotorClient
-from routers import auth, users, courses
+from routers import auth, users, courses, assignment, materials
 from config import settings
 
 # Database connection handling
@@ -41,11 +41,15 @@ async def log_request(request: Request, call_next):
 
 # Static files
 app.mount("/profile_pictures", StaticFiles(directory="profile_pictures"), name="profile_pictures")
+app.mount("/materials", StaticFiles(directory="materials"), name="study_materials")
+
 
 # Include routers
 app.include_router(auth.router, prefix="/api", tags=["auth"])
 app.include_router(users.router, prefix="/api", tags=["users"])
 app.include_router(courses.router, prefix="/api", tags=["courses"])
+app.include_router(assignment.router, prefix="/api", tags=["assignments"])
+app.include_router(materials.router, prefix="/api", tags=["materials"])
 
 if __name__ == "__main__":
     import uvicorn

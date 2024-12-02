@@ -1,76 +1,74 @@
 from pydantic import BaseModel, Field
-from typing import List, Optional, Any
-from bson import ObjectId
+from typing import List, Optional
+from datetime import datetime
+from .common import PyObjectId  # Importing the custom PyObjectId class
 
-class PyObjectId(ObjectId):
-    @classmethod
-    def __get_validators__(cls):
-        yield cls.validate
+# User Ownership Schema
+class Owner(BaseModel):
+    id: PyObjectId = Field(..., alias="_id")
+    name: str
+    role: str  # Can be "admin" or "teacher"
 
-    @classmethod
-    def validate(cls, v):
-        if not ObjectId.is_valid(v):
-            raise ValueError("Invalid objectid")
-        return ObjectId(v)
-
-    @classmethod
-    def __get_pydantic_json_schema__(cls, field_schema: Any) -> None:
-        field_schema.update(type="string")
+    class Config:
+        arbitrary_types_allowed = True
+        json_encoders = {PyObjectId: str}
 
 
-class TeacherModel(BaseModel):
+# Assignment Schema
+class Assignment(BaseModel):
+    id: PyObjectId = Field(default_factory=PyObjectId, alias="_id")
+    title: str
+    description: Optional[str] = None
+    deadline: Optional[datetime] = None
+    completed_by: List[dict] = Field(default_factory=list)  # List of {"student_id": ..., "completion_timestamp": ...}
+
+    class Config:
+        arbitrary_types_allowed = True
+        json_encoders = {PyObjectId: str}
+
+
+# Main Course Model
+class CourseModel(BaseModel):
     id: PyObjectId = Field(default_factory=PyObjectId, alias="_id")
     name: str
-    email: Optional[str] = None
-
-    class Config:
-        json_encoders = {ObjectId: str}
-        arbitrary_types_allowed = True
-
-
-class CourseModel(BaseModel):
-    id: Optional[PyObjectId] = Field(default_factory=PyObjectId, alias="_id")
-    name: str
     description: str
-    teacher_ids: Optional[List[PyObjectId]] = None  # Support multiple teachers
-    teachers: Optional[List[TeacherModel]] = None  # Teacher details can be included optionally
+    owner: Owner  # Owner (teacher or admin who created the course)
+    teachers: List[Owner] = Field(default_factory=list)  # Additional teachers
+    students: List[dict] = Field(default_factory=list)  # List of {"id": student_id, "name": student_name}
+    assignments: List[Assignment] = Field(default_factory=list)  # Assignments within the course
+    archived: bool = Field(default=False)  # Whether the course is archived
+    created_at: datetime = Field(default_factory=datetime.utcnow)
 
     class Config:
-        populate_by_name = True
         arbitrary_types_allowed = True
-        json_encoders = {ObjectId: str}
+        json_encoders = {PyObjectId: str}
+        populate_by_name = True
 
 
+# Schema for Creating a New Course
 class CourseCreate(BaseModel):
     name: str
     description: str
-    teacher_ids: Optional[List[PyObjectId]] = None  # Optional teacher assignment
-
-
-# class CourseOut(BaseModel):
-#     id: str
-#     name: str
-#     description: str
-#     teachers: Optional[List[TeacherModel]] = None  # Include teacher details in the output
-
-
-class EnrolledCourse(BaseModel):
-    id: str
-    name: str
-    description: str
-    teachers: Optional[List[TeacherModel]] = None  # Include teacher details in the enrollment data
-    progress: float
-
-
-class StudentEnrollment(BaseModel):
-    student_id: PyObjectId
-    course_id: Optional[PyObjectId] = None  # Make course_id optional
-    course_name: Optional[str] = None
-    course_description: Optional[str] = None
-    teachers: Optional[List[TeacherModel]] = None  # Include teachers
-    progress: float = 0.0
+    teacher_ids: Optional[List[PyObjectId]] = None  # Initial teachers to add
 
     class Config:
-        populate_by_name = True
         arbitrary_types_allowed = True
-        json_encoders = {ObjectId: str}
+        json_encoders = {PyObjectId: str}
+
+############################################################################################################
+# Schema for Creating a New Assignment
+class AssignmentCreate(BaseModel):
+    title: str
+    description: Optional[str] = None
+    deadline: Optional[datetime] = None
+
+    class Config:
+        arbitrary_types_allowed = True
+
+
+# Schema for Archiving or Unarchiving a Course
+class CourseArchiveAction(BaseModel):
+    archived: bool  # True for archiving, False for unarchiving
+
+    class Config:
+        arbitrary_types_allowed = True

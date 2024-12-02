@@ -3,7 +3,7 @@ from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
 from passlib.context import CryptContext
 from datetime import datetime, timedelta
-from models.user import UserRegister, UserInDB, Token, TokenData, UserLogin, UserUpdate, UserOut
+from models.user import UserRegister, UserInDB, Token, UserLogin, UserUpdate, UserOut
 from typing import Optional
 from motor.motor_asyncio import AsyncIOMotorClient, AsyncIOMotorDatabase
 from bson import ObjectId
