@@ -32,11 +32,15 @@ const Sidebar: React.FC<SidebarProps> = ({ role }) => {
     setIsCoursesMenuOpen((prev) => !prev);
   };
 
+  // Log the profile picture URL for debugging
+  console.log("User Profile Picture URL:", user.profile_picture);
+
   return (
     <div className="bg-gray-800 text-white w-64 md:w-72 lg:w-80 p-4 overflow-y-auto h-full fixed lg:relative lg:min-h-screen">
       <div className="flex items-center space-x-4 mb-6">
+        {/* User Profile Picture */}
         <img
-          src={user.photoUrl} // Assuming the `photoUrl` is part of the `user` object
+          src={user.profile_picture || "/default-profile-pic.jpg"} // Use a fallback URL if profile_picture is missing
           alt="User Profile"
           className="w-12 h-12 rounded-full object-cover"
         />

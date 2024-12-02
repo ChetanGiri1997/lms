@@ -11,7 +11,7 @@ class EmailSchema(BaseModel):
     error_message: Optional[str] = None  # In case of failure, we can store the error message
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class EmailHistoryModel(BaseModel):
@@ -23,4 +23,4 @@ class EmailHistoryModel(BaseModel):
     error_message: Optional[str] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True

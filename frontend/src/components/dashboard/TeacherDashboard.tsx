@@ -4,6 +4,8 @@ import Information from "../Information";
 import ProfileManagement from "../ProfileManagement";
 import { useAuth } from "../../context/AuthContext";
 import UserManagement from "../UserManagement";
+import Courses from "../Course/CourseList";
+import CourseForm from "../Course/CourseForm";
 
 const TeacherDashboard: React.FC = () => {
   const { user } = useAuth();
@@ -29,6 +31,11 @@ const TeacherDashboard: React.FC = () => {
           <Route path="/profile" element={<ProfileManagement />} />
           <Route path="/info" element={<Information />} />
           <Route path="/users" element={<UserManagement />} />
+          <Route path="courses/list" element={<Courses />} />
+            <Route
+              path="courses/add"
+              element={<CourseForm onClose={() => {}} />}
+            />
         </Routes>
       </div>
     </div>

@@ -147,6 +147,7 @@ async def login_for_access_token(login_request: UserLogin, db=Depends(get_db)):
         "token_type": "bearer",
         "role": user.role,
         "id": str(user.id),
+        "profile_picture": user.profile_picture,  # Return profile picture
     }
 
 
@@ -186,11 +187,20 @@ async def refresh_access_token(refresh_token: str, db=Depends(get_db)):
         data={"sub": identifier, "role": role}, expires_delta=access_token_expires
     )
 
-    return {
-        "access_token": new_access_token,
-        "token_type": "bearer",
-        "role": role,
-    }
+    # Retrieve user information to include profile picture
+    user = await db["users"].find_one({"username": identifier})  # or use email if needed
+    if user:
+        return {
+            "access_token": new_access_token,
+            "token_type": "bearer",
+            "role": role,
+            "profile_picture": user.get("profile_picture")  # Return profile picture
+        }
+
+    raise HTTPException(
+        status_code=status.HTTP_404_NOT_FOUND,
+        detail="User not found",
+    )
 
 
 

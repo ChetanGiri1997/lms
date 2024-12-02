@@ -3,6 +3,8 @@ import Sidebar from "../Sidebar";
 import ProfileManagement from "../ProfileManagement";
 import Information from "../Information";
 import { useAuth } from "../../context/AuthContext";
+import Courses from "../Course/CourseList";
+import CourseForm from "../Course/CourseForm";
 
 const StudentDashboard: React.FC = () => {
   const { user } = useAuth();
@@ -26,6 +28,11 @@ const StudentDashboard: React.FC = () => {
           <Route path="/" element={<Navigate to="info" replace />} />
           <Route path="/profile" element={<ProfileManagement />} />
           <Route path="/info" element={<Information />} />
+          <Route path="courses/list" element={<Courses />} />
+            <Route
+              path="courses/add"
+              element={<CourseForm onClose={() => {}} />}
+            />
         </Routes>
       </div>
     </div>

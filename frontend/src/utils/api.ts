@@ -32,9 +32,7 @@ api.interceptors.response.use(
       // Log the error or perform any other necessary actions
       console.error("Unauthorized, redirecting to login...");
 
-      // If you're using React Router's `useNavigate`, you can't use it directly in interceptors.
-      // You would need to handle navigation in a more global context, such as in a React component or context.
-      // For now, just redirect to login page using window.location (this works in all contexts)
+      
       window.location.href = "/login"; // Redirect to the login page
 
       // Optionally, you can clear the localStorage token here if needed:

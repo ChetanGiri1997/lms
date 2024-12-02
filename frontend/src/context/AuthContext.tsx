@@ -7,6 +7,7 @@ interface User {
   role: string;
   exp: number;
   id: string;
+  profile_picture?: string;  // Added profile_picture to the User interface
 }
 
 interface AuthContextType {
@@ -46,8 +47,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         if (decoded.exp * 1000 > Date.now()) {
           const role = localStorage.getItem("role") || "";
           const id = localStorage.getItem("id") || "";
+          const profile_picture = localStorage.getItem("profile_picture") || "";  // Load profile picture
 
-          setUser({ ...decoded, role, id });
+          setUser({ ...decoded, role, id, profile_picture });
         } else {
           localStorage.removeItem("token");
           setUser(null);
@@ -64,18 +66,19 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   const login = async (identifier: string, password: string) => {
     try {
       const response = await api.post("/login", { identifier, password });
-      // console.log(response);
+      console.log("Login successful:", response.data);
 
-      const { access_token, role, id } = response.data;
+      const { access_token, role, id, profile_picture } = response.data;
 
-      // Store the token, role, and id in local storage
+      // Store the token, role, id, and profile picture in local storage
       localStorage.setItem("token", access_token);
       localStorage.setItem("role", role);
       localStorage.setItem("id", id);
+      localStorage.setItem("profile_picture", profile_picture || "");  // Store profile picture
 
       // Decode the JWT token and set user data
       const decoded: User = jwtDecode(access_token);
-      setUser({ ...decoded, role, id });
+      setUser({ ...decoded, role, id, profile_picture });
 
       return true;
     } catch (error) {
@@ -90,6 +93,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       localStorage.removeItem("token");
       localStorage.removeItem("role");
       localStorage.removeItem("id");
+      localStorage.removeItem("profile_picture");  // Remove profile picture
       setUser(null);
     } catch (error) {
       console.error("Logout failed:", error);

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 import api from '../../utils/api'; // Assuming you have an API setup to handle requests
 
 interface Course {
@@ -22,6 +23,7 @@ const CourseForm: React.FC<CourseFormProps> = ({ courseId, onClose }) => {
 
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   useEffect(() => {
     if (courseId) {
@@ -51,13 +53,13 @@ const CourseForm: React.FC<CourseFormProps> = ({ courseId, onClose }) => {
     try {
       if (courseId) {
         // Edit existing course
-        await api.put(`/api/courses/${courseId}`, course);
+        await api.put(`/courses/${courseId}`, course);
       } else {
         // Add new course
-        console.log(course)
-        await api.post('/api/courses', course);
+        await api.post('/courses', course);
       }
       onClose(); // Close the form on success
+      navigate('/dashboard/courses/list'); // Navigate to the course list
     } catch (err) {
       setError((err as Error).message);
     } finally {

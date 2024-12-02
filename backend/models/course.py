@@ -1,7 +1,7 @@
 from pydantic import BaseModel, Field
 from typing import List, Optional
 from datetime import datetime
-from .common import PyObjectId  # Importing the custom PyObjectId class
+from .common import PyObjectId  # Custom PyObjectId class for MongoDB's ObjectId
 
 # User Ownership Schema
 class Owner(BaseModel):
@@ -54,16 +54,6 @@ class CourseCreate(BaseModel):
     class Config:
         arbitrary_types_allowed = True
         json_encoders = {PyObjectId: str}
-
-############################################################################################################
-# Schema for Creating a New Assignment
-class AssignmentCreate(BaseModel):
-    title: str
-    description: Optional[str] = None
-    deadline: Optional[datetime] = None
-
-    class Config:
-        arbitrary_types_allowed = True
 
 
 # Schema for Archiving or Unarchiving a Course

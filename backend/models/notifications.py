@@ -12,7 +12,7 @@ class NotificationSchema(BaseModel):
     error_message: Optional[str] = None  # Error message if sending the notification fails
 
     class Config:
-        orm_mode = True
+        from_attributes = True
         
 class NotificationHistoryModel(BaseModel):
     title: str
@@ -24,4 +24,4 @@ class NotificationHistoryModel(BaseModel):
     error_message: Optional[str] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
