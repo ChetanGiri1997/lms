@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
-import { LogIn } from 'lucide-react';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
+import { LogIn } from "lucide-react";
 
 const Login: React.FC = () => {
-  const [identifier, setIdentifier] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [identifier, setIdentifier] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
   const { login } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError(''); // Reset any previous error messages
+    setError(""); // Reset any previous error messages
     try {
       await login(identifier, password);
-      navigate('/dashboard'); // Navigate to dashboard upon successful login
+      navigate("/dashboard"); // Navigate to dashboard upon successful login
     } catch (err) {
-      setError('Invalid ident or password'); // Set error message on failure
+      setError("Invalid ident or password"); // Set error message on failure
     }
   };
 
@@ -26,13 +26,17 @@ const Login: React.FC = () => {
       <div className="max-w-md w-full space-y-8">
         <div>
           <LogIn className="mx-auto h-12 w-auto text-indigo-600" />
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
+          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+            Sign in to your account
+          </h2>
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <input type="hidden" name="remember" value="true" />
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
-              <label htmlFor="identifier" className="sr-only">identifier</label>
+              <label htmlFor="identifier" className="sr-only">
+                identifier
+              </label>
               <input
                 id="identifier"
                 name="identifier"
@@ -45,7 +49,9 @@ const Login: React.FC = () => {
               />
             </div>
             <div>
-              <label htmlFor="password" className="sr-only">Password</label>
+              <label htmlFor="password" className="sr-only">
+                Password
+              </label>
               <input
                 id="password"
                 name="password"
@@ -59,7 +65,9 @@ const Login: React.FC = () => {
             </div>
           </div>
 
-          {error && <p className="mt-2 text-center text-sm text-red-600">{error}</p>}
+          {error && (
+            <p className="mt-2 text-center text-sm text-red-600">{error}</p>
+          )}
 
           <div>
             <button

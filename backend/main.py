@@ -26,7 +26,7 @@ app = FastAPI(lifespan=lifespan)
 # CORS middleware setup
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://potential-chainsaw-pjgwpr7qxgqx26657-3000.app.github.dev"],  # Exact frontend URL
+    allow_origins=["*"],  # Exact frontend URL
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

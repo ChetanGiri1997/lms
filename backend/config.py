@@ -14,8 +14,9 @@ class Settings(BaseSettings):
     MONGODB_URL: str 
     DB_NAME: str 
     ALGORITHM: str
-    username: str
-    password: str
+    # USERNAME: str
+    # PASSWORD: str
+    BASE_URL: str
     
 
     # Token Expiry Settings

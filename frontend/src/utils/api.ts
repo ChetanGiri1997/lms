@@ -1,18 +1,45 @@
-import axios from 'axios';
+import axios from "axios";
 
+// Create an Axios instance
 const api = axios.create({
-  baseURL: 'https://potential-chainsaw-pjgwpr7qxgqx26657-8000.app.github.dev/api/',
+  baseURL: "http://127.0.0.1:8000/api/", // Replace with your API URL
 });
 
+// Request Interceptor
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('token');
+    // Add the Authorization token if it exists in localStorage
+    const token = localStorage.getItem("token");
     if (token) {
-      config.headers['Authorization'] = `Bearer ${token}`;
+      config.headers["Authorization"] = `Bearer ${token}`;
     }
     return config;
   },
   (error) => {
+    return Promise.reject(error);
+  }
+);
+
+// Response Interceptor
+api.interceptors.response.use(
+  (response) => {
+    // Return the response if no error occurs
+    return response;
+  },
+  (error) => {
+    // If the error response is 401 (Unauthorized), redirect to the login page
+    if (error.response && error.response.status === 401) {
+      // Log the error or perform any other necessary actions
+      console.error("Unauthorized, redirecting to login...");
+
+      // If you're using React Router's `useNavigate`, you can't use it directly in interceptors.
+      // You would need to handle navigation in a more global context, such as in a React component or context.
+      // For now, just redirect to login page using window.location (this works in all contexts)
+      window.location.href = "/login"; // Redirect to the login page
+
+      // Optionally, you can clear the localStorage token here if needed:
+      localStorage.removeItem("token");
+    }
     return Promise.reject(error);
   }
 );
