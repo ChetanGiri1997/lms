@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from contextlib import asynccontextmanager
 from motor.motor_asyncio import AsyncIOMotorClient
-from routers import auth, users, courses, assignment, materials
+from routers import auth, users, courses, assignment, materials, email_router, notifications
 from config import settings
 
 # Database connection handling
@@ -50,6 +50,8 @@ app.include_router(users.router, prefix="/api", tags=["users"])
 app.include_router(courses.router, prefix="/api", tags=["courses"])
 app.include_router(assignment.router, prefix="/api", tags=["assignments"])
 app.include_router(materials.router, prefix="/api", tags=["materials"])
+app.include_router(email_router.router, prefix="/api", tags=["email"])
+app.include_router(notifications.router, prefix="/api", tags=["notifications"])
 
 if __name__ == "__main__":
     import uvicorn
