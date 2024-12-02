@@ -66,7 +66,7 @@ SECRET_KEY=your_secret_key_here
   
 Run Backend Server:  
   
-python3 main.py 
+python3 main.py   
 This will start the FastAPI server on http://localhost:8000.  
   
 ### 3. Set up the Frontend (React)
