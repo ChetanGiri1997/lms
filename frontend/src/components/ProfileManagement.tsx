@@ -28,13 +28,9 @@ const ProfileManagement: React.FC = () => {
           setLastName(userData.last_name);
           if (userData.profile_picture) {
             // Ensure that the profile picture URL is properly formatted
-            setImagePreview(
-              `${api.defaults.baseURL}/${userData.profile_picture.replace(
-                /\\/g,
-                "/"
-              )}`
-            );
+            setImagePreview(userData.profile_picture);
           }
+          
         } else {
           console.error("Failed to fetch user data");
         }

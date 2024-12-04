@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Create an Axios instance
 const api = axios.create({
-  baseURL: "http://127.0.0.1:8000/api/", // Replace with your API URL
+  baseURL: "https://api.chetangiri.com.np/api/", // Replace with your API URL
 });
 
 // Request Interceptor

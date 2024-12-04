@@ -32,8 +32,6 @@ const Sidebar: React.FC<SidebarProps> = ({ role }) => {
     setIsCoursesMenuOpen((prev) => !prev);
   };
 
-  // Log the profile picture URL for debugging
-  console.log("User Profile Picture URL:", user.profile_picture);
 
   return (
     <div className="bg-gray-800 text-white w-64 md:w-72 lg:w-80 p-4 overflow-y-auto h-full fixed lg:relative lg:min-h-screen">
@@ -44,10 +42,7 @@ const Sidebar: React.FC<SidebarProps> = ({ role }) => {
           alt="User Profile"
           className="w-12 h-12 rounded-full object-cover"
         />
-        <div>
-          <p className="text-lg font-semibold">{user.name || "User"}</p>
-          <p className="text-sm text-gray-400">{user.email}</p>
-        </div>
+        
       </div>
       <h2 className="text-2xl font-semibold mb-6">
         {role.charAt(0).toUpperCase() + role.slice(1)} Dashboard

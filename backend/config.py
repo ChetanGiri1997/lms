@@ -14,8 +14,6 @@ class Settings(BaseSettings):
     MONGODB_URL: str 
     DB_NAME: str 
     ALGORITHM: str
-    # USERNAME: str
-    # PASSWORD: str
     BASE_URL: str
     
 

@@ -31,6 +31,7 @@ class UserInDB(BaseModel):
 
 class User(UserBase):
     id: str = Field(default_factory=str, alias="_id")
+    profile_picture: Optional[str] = None
 
     class Config:
         json_encoders = {PyObjectId: str}
@@ -53,10 +54,12 @@ class Token(BaseModel):
     token_type: str
     role: str
     id: str
+    profile_picture: Optional[str] = None
 
 class TokenData(BaseModel):
     username: str
     role: str
+    # profile_picture: Optional[str] = None
 
 class LoginRequest(BaseModel):
     username_or_email: str  # Update to accept either username or email

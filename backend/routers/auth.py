@@ -68,6 +68,7 @@ async def authenticate_user(db: AsyncIOMotorDatabase, identifier: str, password:
         user["id"] = str(user.pop("_id"))
         
         # Return the user as a UserInDB object (assuming you have this model)
+        
         return UserInDB(**user)
     
     return None  # Return None if authentication fails
@@ -117,6 +118,7 @@ async def get_current_user(
 @router.post("/login", response_model=Token)
 async def login_for_access_token(login_request: UserLogin, db=Depends(get_db)):
     user = await authenticate_user(db, login_request.identifier, login_request.password)
+    
     if not user:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
@@ -140,14 +142,14 @@ async def login_for_access_token(login_request: UserLogin, db=Depends(get_db)):
         "token": refresh_token,
         "expires_at": datetime.utcnow() + refresh_token_expires,
     })
-
+    profile_picture = os.getenv("BASE_URL") + user.profile_picture
     return {
         "access_token": access_token,
         "refresh_token": refresh_token,
         "token_type": "bearer",
         "role": user.role,
         "id": str(user.id),
-        "profile_picture": user.profile_picture,  # Return profile picture
+        "profile_picture": profile_picture,  # Return profile picture
     }
 
 

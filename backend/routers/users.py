@@ -5,6 +5,7 @@ from typing import Optional
 from fastapi import UploadFile, File
 from pathlib import Path
 from bson import ObjectId
+import os
 
 router = APIRouter()
 
@@ -34,6 +35,7 @@ async def get_user_profile(user_id: str, current_user: UserInDB = Depends(get_cu
         raise HTTPException(status_code=403, detail="Not authorized to access this profile")
 
     # Create the response model
+    profile_picture_path = os.getenv("BASE_URL") + target_user.get("profile_picture")
     return UserProfileOut(
         id=str(target_user["_id"]),
         username=target_user["username"],
@@ -42,7 +44,7 @@ async def get_user_profile(user_id: str, current_user: UserInDB = Depends(get_cu
         last_name=target_user.get("last_name"),
         role=target_user.get("role", "student"),
         is_active=target_user.get("is_active"),
-        profile_picture=target_user.get("profile_picture")
+        profile_picture=profile_picture_path
     )
 
 
