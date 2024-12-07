@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../../utils/api";
 
+
 interface Teacher {
   id: string;
   name: string;
@@ -161,7 +162,7 @@ const CourseList: React.FC = () => {
 
           return (
             <div key={course.id} className="bg-white p-4 rounded-lg shadow-md">
-              <Link to={`/course/${course.id}`} className="block">
+              <Link to={`/dashboard/coursedetails/${course.id}`} className="block">
                 <h2 className="text-xl font-semibold">{course.name}</h2>
                 <p className="text-gray-600 mt-2">{course.description}</p>
                 {(course.teachers?.length ?? 0) > 0 && (

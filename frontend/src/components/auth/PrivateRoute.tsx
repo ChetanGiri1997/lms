@@ -1,15 +1,20 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
-const PrivateRoute: React.FC = () => {
-  const { user, loading } = useAuth();
+interface PrivateRouteProps {
+  children?: ReactNode;
+}
 
-  if (loading) {
-    return <div>Loading...</div>; // Or a loading spinner component
+const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
+  const { user } = useAuth();
+
+  if (!user) {
+    return <Navigate to="/login" replace />;
   }
 
-  return user ? <Outlet /> : <Navigate to="/login" />;
+  // Render children if provided; otherwise, use Outlet for nested routes
+  return <>{children || <Outlet />}</>;
 };
 
 export default PrivateRoute;

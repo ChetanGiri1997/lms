@@ -1,0 +1,70 @@
+src/
+│
+├───components/
+│   ├───auth/
+│   │   ├───Login.tsx
+│   │   └───PrivateRoute.tsx
+│   │
+│   ├───common/
+│   │   ├───Sidebar.tsx
+│   │   └───Dashboard.tsx
+│   │
+│   ├───users/
+│   │   ├───ProfileManagement.tsx
+│   │   └───UserManagement.tsx
+│   │
+│   └───courses/
+│       ├───management/
+│       │   ├───CourseList.tsx         # Admin/Teacher course management
+│       │   ├───CourseForm.tsx         # Course creation/editing
+│       │   └───CourseDetail.tsx       # Detailed course information
+│       │
+│       ├───student/
+│       │   ├───StudentCourseList.tsx  # Courses enrolled by student
+│       │   └───StudentCourseDetail.tsx # Individual course details for students
+│       │
+│       ├───teacher/
+│       │   ├───TeacherCourseList.tsx  # Courses taught by teacher
+│       │   └───TeacherCourseDetail.tsx # Course management for teachers
+│       │
+│       └───components/
+│           ├───CourseCard.tsx         # Reusable course card component
+│           └───CourseSidebar.tsx      # Course-specific sidebar
+│
+├───pages/
+│   ├───dashboard/
+│   │   ├───AdminDashboard.tsx
+│   │   ├───StudentDashboard.tsx
+│   │   └───TeacherDashboard.tsx
+│   │
+│   ├───auth/
+│   │   └───LoginPage.tsx
+│   │
+│   ├───courses/
+│   │   ├───CourseManagementPage.tsx
+│   │   ├───CourseListPage.tsx
+│   │   └───CourseDetailPage.tsx
+│   │
+│   └───users/
+│       ├───ProfilePage.tsx
+│       └───UserManagementPage.tsx
+│
+├───context/
+│   └───AuthContext.tsx
+│
+├───hooks/
+│   ├───useCourses.ts
+│   └───useAuth.ts
+│
+├───routes/
+│   ├───PrivateRoutes.tsx
+│   ├───AdminRoutes.tsx
+│   ├───StudentRoutes.tsx
+│   └───TeacherRoutes.tsx
+│
+├───services/
+│   ├───courseService.ts
+│   └───authService.ts
+│
+└───utils/
+    └───api.ts

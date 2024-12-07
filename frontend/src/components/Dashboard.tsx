@@ -6,7 +6,11 @@ import StudentDashboard from "./dashboard/StudentDashboard";
 import { Navigate } from "react-router-dom";
 
 const Dashboard: React.FC = () => {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
+
+  if (loading) {
+    return <div>Loading...</div>; // Show a loading spinner or similar UI
+  }
 
   if (!user) {
     return <Navigate to="/login" replace />;
@@ -23,5 +27,6 @@ const Dashboard: React.FC = () => {
       return <div>Invalid user role</div>;
   }
 };
+
 
 export default Dashboard;
