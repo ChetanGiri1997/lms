@@ -142,7 +142,10 @@ async def login_for_access_token(login_request: UserLogin, db=Depends(get_db)):
         "token": refresh_token,
         "expires_at": datetime.utcnow() + refresh_token_expires,
     })
-    profile_picture = os.getenv("BASE_URL") + user.profile_picture
+    if user.profile_picture:
+        profile_picture = os.getenv("BASE_URL") + user.profile_picture
+    else:
+        profile_picture = "None"
     return {
         "access_token": access_token,
         "refresh_token": refresh_token,
