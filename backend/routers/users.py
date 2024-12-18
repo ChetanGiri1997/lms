@@ -35,7 +35,10 @@ async def get_user_profile(user_id: str, current_user: UserInDB = Depends(get_cu
         raise HTTPException(status_code=403, detail="Not authorized to access this profile")
 
     # Create the response model
-    profile_picture_path = os.getenv("BASE_URL") + target_user.get("profile_picture")
+    if target_user.get("profile_picture"):
+        profile_picture_path = os.getenv("BASE_URL") + target_user.get("profile_picture")
+    else:
+        profile_picture_path = "None"
     return UserProfileOut(
         id=str(target_user["_id"]),
         username=target_user["username"],
